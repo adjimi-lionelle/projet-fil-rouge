@@ -1,0 +1,5 @@
+---
+- hosts: odoo
+  become: true
+  roles:
+    - { role: odoo_role}

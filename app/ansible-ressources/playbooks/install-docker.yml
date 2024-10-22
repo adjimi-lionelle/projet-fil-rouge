@@ -1,0 +1,6 @@
+---
+- hosts: ic_webapp,odoo
+  become: true
+  gather_facts: yes
+  roles:
+    - { role: install-docker}
