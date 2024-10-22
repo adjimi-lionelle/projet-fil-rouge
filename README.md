@@ -29,16 +29,32 @@ pgAdmin quant à elle devra être utilisée pour administrer de façon graphique
 
 ### **a)  Création de l'image et du container de test**
 
-Après avoir rédigé le Dockerfile, nous allons builder l'image et créer le conteneur de test. Pour ce faire, nous allons exécuter les commandes suivantes :
+Après avoir rédigé le Dockerfile, nous allons builder l'image, créer le conteneur de test et faire des testes afin de vérifier le bon fonctionnement . Pour ce faire, nous allons exécuter les commandes suivantes :
 
 ```bash
 docker build -t ic-webapp:1.0 .
-docker run --name test-ic-webapp -d -e ODOO_URL="https://odoo.com" -e PGADMIN_URL="https://pgadmin.org" -p 8080:8080 ic-webapp:1.0
-
-ic-webapp:1.0 
+docker run --name test-ic-webapp -d -e ODOO_URL="https://odoo.com" -e PGADMIN_URL="https://pgadmin.org" -p 8085:8085 ic-webapp:1.0
 ```
 
 ![alt text](images/image-9.png)
+
+Test du déploiement 
+
+Nous pouvons tester le déploiement de 2 façcons à savoir : 
+
+  Utilisation d'une commande curl 
+
+  ```bash
+curl -I http://localhost:8085 | grep -i "200"
+```
+
+![alt text](images/image-14.png)
+
+Ou en accédant à l'application via le navigateur en utilisant l'URL suivante : http://localhost:8085/
+
+![alt text](images/image-15.png)
+
+  
 
 ### **b) Suppression du container de test et pousse de l'image dans notre compte Docker Hub**
 
