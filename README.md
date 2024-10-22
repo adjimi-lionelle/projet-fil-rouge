@@ -1,7 +1,6 @@
 
 # PROJET FINAL DEVOPS
 
-# Auteur
 
 ## **1) Partie 1 : Introduction**
 
@@ -25,14 +24,10 @@ pgAdmin quant à elle devra être utilisée pour administrer de façon graphique
 - Docker Hub officiel: https://hub.docker.com/r/dpage/pgadmin4/
 
 
-## Objectif
 
+## **1)  Conteneurisation de l’application web**
 
-## Étapes à suivre 
-
-## **1) Conteneurisation de l’application web**
-
-## **a) Création de l'image et du container de test**
+### **a)  Création de l'image et du container de test**
 
 Après avoir rédigé le Dockerfile, nous allons builder l'image et créer le conteneur de test. Pour ce faire, nous allons exécuter les commandes suivantes :
 
@@ -45,12 +40,12 @@ ic-webapp:1.0
 
 ![alt text](images/image-9.png)
 
-## **b) Suppression du container de test et pousse de l'image dans notre compte Docker Hub**
+### **b) Suppression du container de test et pousse de l'image dans notre compte Docker Hub**
 
 Pour supprimer le conteneur de test, nous allons exécuter les commandes ci-dessous.
 
 ```bash
-docker stop test-ic-webapp
+docker s#top test-ic-webapp
 docker rm test-ic-webapp
 ```
 Ensuite, nous allons taguer l'image et nous connecter à notre compte Docker Hub avec les commandes suivantes :
@@ -68,9 +63,9 @@ docker push lionie/ic-webapp:1.0
 Ainsi prend fin cette partie. Dans la partie suivante il sera question de mettre en place un pipeline CI/CD à l'aide de Jenkins et Ansible
 
 
-## **2) Partie 2 : Mise en place d'un pipeline CI/CD à l'aide de JENKINS et de ANSIBLE.
+## **2) Partie 2 : Mise en place d'un pipeline CI/CD à l'aide de JENKINS et de ANSIBLE.**
 
- ## **a) PRésentation des serveurs.
+ ### **a) PRésentation des serveurs**
 
  Pour réaliser cette partie, nous avons utiliser Vagrant pour provisionner 3 Machines Virtuelles comme suit: 
 
@@ -80,12 +75,12 @@ Ainsi prend fin cette partie. Dans la partie suivante il sera question de mettre
 
  ![alt text](images/image.png)
 
- ## **b) Automatisation du déploiement
+ ### **b) Automatisation du déploiement**
 
  Pour ce faire, nous avons créé des rôles Ansible pour les applications PgAdmin, Odoo et ic-webapp, ainsi qu'un fichier Jenkinsfile contenant les différentes étapes de notre pipeline. Nous avons utilisé Ansible dans le pipeline Jenkins pour exécuter les différents playbooks.
 
 
- ## **c) Tests de fonctionnement
+ ### **c) Tests de fonctionnement**
 
  - Lancement manuel du pipeline
 
@@ -129,7 +124,7 @@ Cette partie est maintenant terminée. Dans la prochaine partie, nous déploiero
 
 ## **3) Partie 3 : Déploiement des différentes applications dans un cluster Kubernetes**
 
-## **a) Architecture**
+### **a) Architecture**
 
 ![alt text](app/ic-webapp/images/synoptique_Kubernetes.jpeg)
 
@@ -184,7 +179,7 @@ H : PgAdmin
   - Rôle : exécute l'application PgAdmin, une interface web pour la gestion des bases de.
 
 
-## **b) Déploiement des différentes applications**
+#### **b) Déploiement des différentes applications**
 
 -  Création d'un namespace:
 
@@ -255,7 +250,7 @@ kubectl apply -f kubertnetes-ressources/ic-webapp/ic-webapp-nodeport.yml
 
 ![alt text](images/image-10.png)
 
-## **c) Accès aux différentes applications via le navigateur**
+### **c) Accès aux différentes applications via le navigateur**
 
 - Accès à l'application vitrine ic-webapp via le navigateur
 
